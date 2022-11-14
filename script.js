@@ -29,7 +29,7 @@ const posts = [
 ]
 
 const postEl = document.getElementById("post-el")
-const imageBtn = document.getElementById("post-button")
+const imageBtn = document.getElementById("like-button")
 const text = document.getElementById("heart")
 const likesCount = document.getElementById("like-count")
 const mainEl = document.getElementById("main-content")
@@ -45,13 +45,13 @@ for(let i = 1; i < posts.length; i++) {
                         </div>
                     </div>
                     <div class="user-post_wr" id="user-img">
-                        <button class="post-btn" id="post-button">
+                        <button class="post-btn" id="like-button">
                             <img class="post_img" src=${posts[i].post}>
                         </button>
                     </div>
                     <div class="user-desc_wr">
                         <div class="icon-wrapper">
-                            <img id="heart" class="interaction-icon" src="images/icon-heart.png">
+                            <img class="interaction-icon" src="images/icon-heart.png">
                             <img class="interaction-icon" src="images/icon-comment.png">       
                             <img class="interaction-icon" src="images/icon-dm.png">
                         </div>
@@ -70,14 +70,8 @@ for(let i = 1; i < posts.length; i++) {
     
 }
 
-imageBtn.addEventListener("dblclick", function() {
-    numberLikes += 1
-    likesCount.textContent = numberLikes
+console.log(imageBtn.innerHTML)
 
-    console.log("Big Like")
-})
-
-
-text.addEventListener("click", function() {
-    console.log("get hearted")
+$("imageBtn").addEventListener("dblclick", function() {
+    console.log("Hello world")
 })

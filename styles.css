@@ -147,3 +147,14 @@ p {
 
     margin-right: 10px
 }
+
+.interaction-icon.like {
+    color: firebrick;
+}
+
+.interaction-icon:hover,
+.interaction-icon:active {
+    transform: rotate(360deg);
+    transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    transition: 1s;
+}
