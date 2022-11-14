@@ -28,3 +28,22 @@ const posts = [
     }
 ]
 
+const postEl = document.getElementById("post-el")
+const imageBtn = document.getElementById("post-btn")
+const text = document.getElementById("heart")
+const likesCount = document.getElementById("like-count")
+
+let numberLikes = 21486
+
+imageBtn.addEventListener("dblclick", function() {
+    numberLikes += 1
+    likesCount.textContent = numberLikes
+})
+
+for(let i = 0; i < posts.length; i++) {
+
+}
+
+text.addEventListener("click", function() {
+    console.log("Hello wrolds")
+})

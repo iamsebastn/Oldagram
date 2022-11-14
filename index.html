@@ -12,7 +12,7 @@
                     <img class="logo_img" src="images/logo.png">
                     <img class="account_img" src="images/user-avatar.png">
                 </header>
-                <div class="post">
+                <div class="post" id="post-el">
                     <div class="user-info_wr">
                         <img class="user_img" src="images/avatar-vangogh.jpg">
                         <div class="user_info">
@@ -20,16 +20,16 @@
                             <p>Zudert, Netherlands</p>
                         </div>
                     </div>
-                    <div class="user-post_wr">
-                        <img class="user_post" src="images/post-vangogh.jpg">
+                    <div class="user-post_wr" id="user-img">
+                        <button class="post-btn" id="post-btn"></button>
                     </div>
                     <div class="user-desc_wr">
                         <div class="icon-wrapper">
-                            <img class="interaction-icon" src="images/icon-heart.png">
+                            <img id="heart" class="interaction-icon" src="images/icon-heart.png">
                             <img class="interaction-icon" src="images/icon-comment.png">       
                             <img class="interaction-icon" src="images/icon-dm.png">
                         </div>
-                        <p class="bold_txt">21.486 Likes</p>
+                        <p class="bold_txt"><span id="like-count">21486</span> Likes</p>
                         <p>
                             <span class="bold_txt">
                                 vincey1853
@@ -40,5 +40,6 @@
                 </div>
             </div>
         </div>
+        <script src="script.js"></script>
     </body>
 </html>
