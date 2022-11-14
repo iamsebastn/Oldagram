@@ -7,7 +7,7 @@ body {
 /* CONTAINER */
 .page-content {
     width: 100%;
-    background-color: aquamarine;
+    background-color: rgb(234, 234, 234);
 }
 
 .main-wrapper {
