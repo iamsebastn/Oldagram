@@ -29,21 +29,55 @@ const posts = [
 ]
 
 const postEl = document.getElementById("post-el")
-const imageBtn = document.getElementById("post-btn")
+const imageBtn = document.getElementById("post-button")
 const text = document.getElementById("heart")
 const likesCount = document.getElementById("like-count")
+const mainEl = document.getElementById("main-content")
 
-let numberLikes = 21486
+
+for(let i = 1; i < posts.length; i++) {
+    let post = `<div class="post" id="post-el">
+    <div class="user-info_wr">
+                        <img class="user_img" src=${posts[i].avatar}>
+                        <div class="user_info">
+                            <p class="bold_txt">${posts[i].name}</p>
+                            <p>${posts[i].location}</p>
+                        </div>
+                    </div>
+                    <div class="user-post_wr" id="user-img">
+                        <button class="post-btn" id="post-button">
+                            <img class="post_img" src=${posts[i].post}>
+                        </button>
+                    </div>
+                    <div class="user-desc_wr">
+                        <div class="icon-wrapper">
+                            <img id="heart" class="interaction-icon" src="images/icon-heart.png">
+                            <img class="interaction-icon" src="images/icon-comment.png">       
+                            <img class="interaction-icon" src="images/icon-dm.png">
+                        </div>
+                        <p class="bold_txt"><span id="like-count">${posts[i].likes}</span> Likes</p>
+                        <p>
+                            <span class="bold_txt">
+                                ${posts[i].username}
+                            </span> 
+                            ${posts[i].comment}
+                        </p>
+                    </div>
+                </div>
+                `
+
+    mainEl.innerHTML += post 
+    
+}
 
 imageBtn.addEventListener("dblclick", function() {
     numberLikes += 1
     likesCount.textContent = numberLikes
+
+    console.log("Big Like")
 })
 
-for(let i = 0; i < posts.length; i++) {
-
-}
 
 text.addEventListener("click", function() {
-    console.log("Hello wrolds")
+    console.log("get hearted")
 })
