@@ -28,16 +28,13 @@ const posts = [
     }
 ]
 
-const postEl = document.getElementById("post-el")
-const imageBtn = document.getElementById("like-button")
-const text = document.getElementById("heart")
 const likesCount = document.getElementById("like-count")
 const mainEl = document.getElementById("main-content")
+const btn = document.getElementById("like-button")
 
-
-for(let i = 1; i < posts.length; i++) {
-    let post = `<div class="post" id="post-el">
-    <div class="user-info_wr">
+for(let i = 0; i < posts.length; i++) {
+    let userPost = `<div class="post" id="post-el">
+                    <div class="user-info_wr">
                         <img class="user_img" src=${posts[i].avatar}>
                         <div class="user_info">
                             <p class="bold_txt">${posts[i].name}</p>
@@ -55,7 +52,7 @@ for(let i = 1; i < posts.length; i++) {
                             <img class="interaction-icon" src="images/icon-comment.png">       
                             <img class="interaction-icon" src="images/icon-dm.png">
                         </div>
-                        <p class="bold_txt"><span id="like-count">${posts[i].likes}</span> Likes</p>
+                        <p class="bold_txt likes"><span id="like-count">${posts[i].likes}</span> Likes</p>
                         <p>
                             <span class="bold_txt">
                                 ${posts[i].username}
@@ -66,12 +63,12 @@ for(let i = 1; i < posts.length; i++) {
                 </div>
                 `
 
-    mainEl.innerHTML += post 
-    
+    mainEl.innerHTML += userPost 
 }
 
-console.log(imageBtn.innerHTML)
+console.log(btn.innerHTML)
 
-$("imageBtn").addEventListener("dblclick", function() {
-    console.log("Hello world")
+btn.addEventListener("click", function() {
+    console.log("Hello")
 })
+
