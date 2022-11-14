@@ -30,8 +30,6 @@ const posts = [
 
 const likesCount = document.getElementById("like-count")
 const likeEl = document.getElementById("like-btn")
-const test = document.getElementById("test")
-
 
 for(let i = 1; i < posts.length; i++) {
     document.getElementById("main-content").innerHTML += `
@@ -66,11 +64,3 @@ for(let i = 1; i < posts.length; i++) {
     `
 
 }
-
-likeEl.addEventListener("click", function() {
-    console.log("hello")
-})
-
-test.addEventListener("click", function() {
-    console.log("Hello world")
-})
