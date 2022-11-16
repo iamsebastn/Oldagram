@@ -27,14 +27,11 @@ const posts = [
         likes: 152
     }
 ]
-
-const likesCount = document.getElementById("like-count")
 const likeEl = document.getElementById("like-btn")
-const likeBtn = document.getElementById("post-btn")
 
-for(let i = 1; i < posts.length; i++) {
+for(let i = 0; i < posts.length; i++) {
     document.getElementById("main-content").innerHTML += `
-    <div class="post" id="post-el">
+    <main class="post" id="post-el">
         <div class="user-info_wr">
             <img class="user_img" src=${posts[i].avatar}>
             <div class="user_info">
@@ -48,7 +45,7 @@ for(let i = 1; i < posts.length; i++) {
             </button>
         </div>
         <div class="user-desc_wr">
-            <div class="icon-wrapper">
+            <div class="icon-wrapper" id="img-btn">
                 <img class="interaction-icon" src="images/icon-heart.png">
                 <img class="interaction-icon" src="images/icon-comment.png">       
                 <img class="interaction-icon" src="images/icon-dm.png">
@@ -61,10 +58,7 @@ for(let i = 1; i < posts.length; i++) {
                 ${posts[i].comment}
             </p>
         </div>
-    </div>
+    </main>
     `
 }
 
-likeBtn.addEventListener("click", function() {
-    console.log("Hello")
-})
