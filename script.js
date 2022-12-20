@@ -23,6 +23,13 @@ function getLikesPost(postId) {
 function createPosts() {
     let postItem = ""
     postsData.forEach(function(post) {
+
+        let likeIconClass = "fa-regular"
+
+        if (post.isLiked) {
+            likeIconClass = "fa-solid"
+        } 
+
         postItem += `
     <div class="post-item">
         <div class="post-header">
@@ -41,7 +48,7 @@ function createPosts() {
             <div class="btn-wrap">
                 <div class="main-btns">
                     <button class="interact-btn">
-                        <i class="fa-regular fa-heart like" data-like="${post.uuid}"></i>
+                        <i class="${likeIconClass} fa-heart" data-like="${post.uuid}"></i>
                     </button>
                     <button class="interact-btn">
                         <i class="fa-regular fa-comment icon"></i>
