@@ -1,60 +1,84 @@
-import {posts} from "./data.js"
+import {postsData} from "./data.js"
 
+document.addEventListener("click", function(e) {
+    if (e.target.dataset.like) {
+        getLikesPost(e.target.dataset.like)
+    }
+})
 
+function getLikesPost(postId) {
+    const likeHandle = postsData.filter(function(post){
+        return post.uuid === postId
+    })[0]
+
+    if(likeHandle.isLiked === false){
+        likeHandle.likes++
+    } else {
+        likeHandle.likes--
+    }
+    likeHandle.isLiked = !likeHandle.isLiked
+    render()
+}
 
 function createPosts() {
+    let postItem = ""
+    postsData.forEach(function(post) {
+        postItem += `
+    <div class="post-item">
+        <div class="post-header">
+            <div class="userpic-wr">
+                <img class="post-userpic" src="${post.avatar}">
+            </div>
+            <div class="post-name">
+                <p class="t-p bold">${post.username}</p>
+                <p class="t-p">${post.location}</p>
+            </div>
+        </div>
+        <div class="post-content">
+            <img class="post-img" src="${post.post}" data-like="${post.uuid}">
+        </div>
+        <div class="post-info">
+            <div class="btn-wrap">
+                <div class="main-btns">
+                    <button class="interact-btn">
+                        <i class="fa-regular fa-heart like" data-like="${post.uuid}"></i>
+                    </button>
+                    <button class="interact-btn">
+                        <i class="fa-regular fa-comment icon"></i>
+                    </button>
+                    <button class="interact-btn">
+                        <i class="fa-regular fa-paper-plane icon"></i>
+                    </button>
+                </div>
+                <button class="interact-btn" class="save-btn">
+                    <i class="fa-regular fa-bookmark icon"></i>
+                </button>
+            </div>
+            <div class="like-stats">
+                <div class="liked-by-wr">
+                    <img class="liked-by_img" src="${post.likedByPic}">
+                </div>
+                <div class="like-details">
+                    <p class="t-p">liked by <span class="t-p bold">${post.likedByName}</span> and <span class="t-p bold">${post.likes}</span> others</p>
+                </div>
+            </div>
+            <div class="post-creator">
+                <p class="t-p"><span class="t-p bold">${post.username} </span>${post.comment}</p>
+            </div>
+            <div class="post-footer">
+                <p class="t-p grey">View all <span>${post.numberComments}</span> comments</p>
+                <p class="t-eye">${post.postDate}</p>
+            </div>
+        </div>
+    </div> 
+        `
+    })
 
+    return postItem
 }
 
 function render() {
-
+    document.getElementById("post-wrapper").innerHTML = createPosts()
 }
 
-
-/*
-                    <div class="post-item">
-                        <div class="post-header">
-                            <img class="post-userpic" src="USER_PROFILE-PIC">
-                            <div class="post-name">
-                                <p class="t-p bold">USER_NAME</p>
-                                <p class="t-p">USER_LOCATION</p>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <img class="post-img" src="USER_POST">
-                        </div>
-                        <div class="post-info">
-                            <div class="btn-wrap">
-                                <div class="main-btns">
-                                    <button class="interact-btn">
-                                        <i class="fa-regular fa-heart icon" data-like="UUID"></i>
-                                    </button>
-                                    <button class="interact-btn">
-                                        <i class="fa-regular fa-comment icon"></i>
-                                    </button>
-                                    <button class="interact-btn">
-                                        <i class="fa-regular fa-paper-plane icon"></i>
-                                    </button>
-                                </div>
-                                <button class="interact-btn" class="save-btn">
-                                    <i class="fa-regular fa-bookmark icon"></i>
-                                </button>
-                            </div>
-                            <div class="like-stats">
-                                <div class="liked-by-wr">
-                                    <img class="liked-by_img" src="LIKED_BY">
-                                </div>
-                                <div class="like-details">
-                                    <p class="t-p">liked by <span class="t-p bold">USER_NAME</span> and <span class="t-p bold">NUMBER_LIKES</span> others</p>
-                                </div>
-                            </div>
-                            <div class="post-creator">
-                                <p class="t-p"><span class="t-p bold">USER_NAME</span>USER_CONTENT</p>
-                            </div>
-                            <div class="post-footer">
-                                <p class="t-p grey">View all <span>USER_COMMENTS</span> comments</p>
-                                <p class="t-eye">POST_TIME</p>
-                            </div>
-                        </div>
-                    </div> 
-*/
+render()

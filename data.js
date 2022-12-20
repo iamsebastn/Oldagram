@@ -1,10 +1,10 @@
-export const posts = [
+export const postsData = [
     {
         name: "Joel Agnès Heymans",
         username: "heyjoel",
         location: "Zundert, Netherlands",
         avatar: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80",
-        post: "https://unsplash.com/photos/6WrPNzhZR3I",
+        post: "https://images.unsplash.com/photo-1653199898411-b93028f1a916?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80",
         numberComments: 59,
         comment: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore",
         likes: 216,
