@@ -7,12 +7,12 @@ body {
 /* CONTAINER */
 .page-content {
     width: 100%;
-    background-color: rgb(234, 234, 234);
+    background-color: rgb(231, 227, 227);
 }
 
 .main-wrapper {
     width: 375px;
-    height: 1767px;
+    height: auto;
     margin: auto;
     background-color: #EDEDED;
 }
@@ -115,7 +115,14 @@ section {
     column-gap: 4px;
 
     padding: 0;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+}
+
+.post-footer {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 12px;
 }
 
 /*IMG'S*/
@@ -158,9 +165,15 @@ section {
     font-weight: bold;
 }
 
+.t-p.grey {
+    color:rgb(176, 176, 176)
+}
+
 .t-eye {
     font-size: 10px;
 }
+
+
 
 /*BTN*/
 .interact-btn {
