@@ -2,7 +2,7 @@ import {posts} from "./data.js"
 
 
 
-function createPosts(post) {
+function createPosts() {
 
 }
 
