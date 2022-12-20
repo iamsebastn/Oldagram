@@ -1,48 +1,37 @@
-const posts = [
-    {
-        name: "Vincent van Gogh",
-        username: "vincey1853",
-        location: "Zundert, Netherlands",
-        avatar: "images/avatar-vangogh.jpg",
-        post: "images/post-vangogh.jpg",
-        comment: "just took a few mushrooms lol",
-        likes: 21
-    },
-    {
-        name: "Gustave Courbet",
-        username: "gus1819",
-        location: "Ornans, France",
-        avatar: "images/avatar-courbet.jpg",
-        post: "images/post-courbet.jpg",
-        comment: "i'm feelin a bit stressed tbh",
-        likes: 4
-    },
-        {
-        name: "Joseph Ducreux",
-        username: "jd1735",
-        location: "Paris, France",
-        avatar: "images/avatar-ducreux.jpg",
-        post: "images/post-ducreux.jpg",
-        comment: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
-        likes: 152
-    }
-]
-const likeEl = document.getElementById("like-btn")
+import {posts} from "./data.js"
 
-for(let i = 0; i < posts.length; i++) {
-    document.getElementById("main-content").innerHTML += `
-    <main class="post" id="post-el">
+const likeEl = document.getElementById("like-btn")
+const mainContent = document.getElementById("main-content")
+
+document.addEventListener("dblclick", function(e) {
+    handleLikeClick(e.target.dataset.image)
+
+})
+
+function handleLikeClick(likeId) {
+    const targetPostObj = posts.filter(function(post) {
+        return targetPostObj.uuid === likeId
+    })
+
+    
+}
+
+posts.forEach(function(post) {
+    let postContent = ""
+
+    postContent += `
+        <main class="post" id="post-el">
         <div class="user-info_wr">
-            <img class="user_img" src=${posts[i].avatar}>
+            <img class="user_img" src=${post.avatar}>
             <div class="user_info">
-                <p class="bold_txt">${posts[i].name}</p>
-                <p>${posts[i].location}</p>
+                <p class="bold_txt">${post.name}</p>
+                <p>${post.location}</p>
             </div>
         </div>
         <div class="user-post_wr" id="user-img">
-            <button class="post-btn" id="like-button">
-                <img class="post_img" src=${posts[i].post}>
-            </button>
+            <div class="post-btn" id="like-button">
+                <img data-image="${post.uuid} class="post_img" src=${post.post}>
+            </div>
         </div>
         <div class="user-desc_wr">
             <div class="icon-wrapper" id="img-btn">
@@ -50,15 +39,18 @@ for(let i = 0; i < posts.length; i++) {
                 <img class="interaction-icon" src="images/icon-comment.png">       
                 <img class="interaction-icon" src="images/icon-dm.png">
             </div>
-            <p class="bold_txt likes"><span id="like-count">${posts[i].likes}</span> Likes</p>
+            <p class="bold_txt likes"><span id="like-count">${post.likes}</span> Likes</p>
             <p>
                 <span class="bold_txt">
-                    ${posts[i].username}
+                    ${post.username}
                 </span> 
-                ${posts[i].comment}
+                ${post.comment}
             </p>
         </div>
     </main>
     `
-}
+    mainContent.innerHTML += postContent
+})
+
+
 
