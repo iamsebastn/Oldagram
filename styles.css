@@ -215,6 +215,20 @@ section {
     padding: 0;
 }
 
+.comment-btn {
+    text-align: left;
+    font-size: 0.9em;
+    font-weight: medium;
+    
+    padding: 0;
+    
+    background: none;
+    border: none;
+    color: var(--main-accent-clr);
+
+    cursor: pointer;
+}
+
 i {
     font-size: 17px;
     color: var(--main-fg-clr);
@@ -222,4 +236,8 @@ i {
 
 .fa-solid {
     color: red;
+}
+
+.fa-solid.yellow {
+    color: yellow;
 }

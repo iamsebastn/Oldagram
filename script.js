@@ -3,32 +3,48 @@ import {postsData} from "./data.js"
 document.addEventListener("click", function(e) {
     if (e.target.dataset.like) {
         getLikesPost(e.target.dataset.like)
-    }
+    } else if (e.target.dataset.save) {
+        savePost(e.target.dataset.save)
+    } 
 })
 
 function getLikesPost(postId) {
-    const likeHandle = postsData.filter(function(post){
+    const likeHandle = postsData.filter((post) => {
         return post.uuid === postId
     })[0]
 
-    if(likeHandle.isLiked === false){
-        likeHandle.likes++
-    } else {
+    if(likeHandle.isLiked){
         likeHandle.likes--
+    } else {
+        likeHandle.likes++
     }
     likeHandle.isLiked = !likeHandle.isLiked
     render()
 }
 
+function savePost(postId){
+    const saveHandle = postsData.filter((post) => {
+        return post.uuid === postId
+    })
+
+    saveHandle = !saveHandle.isShared
+    render()
+}
+
 function createPosts() {
     let postItem = ""
-    postsData.forEach(function(post) {
 
+    postsData.forEach((post) => {
         let likeIconClass = "fa-regular"
+        let saveIconClass = "fa-regular"
 
         if (post.isLiked) {
             likeIconClass = "fa-solid"
-        } 
+        }
+        
+        if (post.isShared) {
+            saveIconClass = "fa-solid yellow"
+        }
 
         postItem += `
     <div class="post-item">
@@ -42,7 +58,7 @@ function createPosts() {
             </div>
         </div>
         <div class="post-content">
-            <img class="post-img" src="${post.post}" data-like="${post.uuid}">
+            <img class="post-img" src="${post.post}" data-dbl="${post.uuid}">
         </div>
         <div class="post-info">
             <div class="btn-wrap">
@@ -57,8 +73,8 @@ function createPosts() {
                         <i class="fa-regular fa-paper-plane icon"></i>
                     </button>
                 </div>
-                <button class="interact-btn" class="save-btn">
-                    <i class="fa-regular fa-bookmark icon"></i>
+                <button class="interact-btn" data-save="${post.uuid}">
+                    <i class="${saveIconClass} fa-bookmark icon"></i>
                 </button>
             </div>
             <div class="like-stats">
@@ -73,7 +89,7 @@ function createPosts() {
                 <p class="t-p"><span class="t-p bold">${post.username} </span>${post.comment}</p>
             </div>
             <div class="post-footer">
-                <p class="t-p grey">View all <span>${post.numberComments}</span> comments</p>
+                <button class="comment-btn">View all <span>${post.numberOfComments}</span> comments</button>
                 <p class="t-eye">${post.postDate}</p>
             </div>
         </div>
