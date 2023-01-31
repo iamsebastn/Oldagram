@@ -3,9 +3,12 @@ import {postsData} from "./data.js"
 document.addEventListener("click", function(e) {
     if (e.target.dataset.like) {
         getLikesPost(e.target.dataset.like)
-    } else if (e.target.dataset.save) {
+    } else if (e.target.dataset.bookmark) {
+        alert("Post has been saved")
         savePost(e.target.dataset.save)
-    } 
+    } else {
+
+    }
 })
 
 function getLikesPost(postId) {
@@ -73,7 +76,7 @@ function createPosts() {
                         <i class="fa-regular fa-paper-plane icon"></i>
                     </button>
                 </div>
-                <button class="interact-btn" data-save="${post.uuid}">
+                <button class="interact-btn" data-bookmark="${post.uuid}">
                     <i class="${saveIconClass} fa-bookmark icon"></i>
                 </button>
             </div>
